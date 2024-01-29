@@ -1,5 +1,8 @@
 #!/usr/bin/env sh
 
+# Search youtube video and get the url
+# Dependency: curl, jq
+
 # For instance url: https://api.invidious.io/
 URL="https://invidious.einfachzocken.eu"
 
