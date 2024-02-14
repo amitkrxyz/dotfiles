@@ -9,6 +9,8 @@ vim.opt.shiftwidth = 2
 vim.opt.wrap = false
 vim.opt.swapfile = false
 
+vim.opt.relativenumber = true
+
 vim.g.netrw_banner = 0
 vim.g.undotree_SetFocusWhenToggle = true
 

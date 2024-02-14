@@ -61,6 +61,9 @@ return {
 		local cmp = require("cmp")
 		require("luasnip.loaders.from_vscode").lazy_load()
 		cmp.setup({
+			experimental = {
+				ghost_text = true
+			},
 			snippet = {
 				-- REQUIRED - you must specify a snippet engine
 				expand = function(args)
@@ -78,37 +81,13 @@ return {
 				['<C-e>'] = cmp.mapping.abort(),
 				['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
 
-
-				-- Luasnip mapping
-				["<Tab>"] = cmp.mapping(function(fallback)
-					if cmp.visible() then
-						cmp.select_next_item()
-						-- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable()
-						-- that way you will only jump inside the snippet region
-					elseif luasnip.expand_or_jumpable() then
-						luasnip.expand_or_jump()
-					elseif has_words_before() then
-						cmp.complete()
-					else
-						fallback()
-					end
-				end, { "i", "s" }),
-
-				["<S-Tab>"] = cmp.mapping(function(fallback)
-					if cmp.visible() then
-						cmp.select_prev_item()
-					elseif luasnip.jumpable(-1) then
-						luasnip.jump(-1)
-					else
-						fallback()
-					end
-				end, { "i", "s" }),
 			}),
 			sources = cmp.config.sources({
+				{ name = 'luasnip' }, -- For luasnip users.
 				{ name = 'nvim_lua' },
 				{ name = 'nvim_lsp' },
-				{ name = 'luasnip' }, -- For luasnip users.
 			}, {
+				{ name = 'path' },
 				{ name = 'buffer' },
 			})
 		})

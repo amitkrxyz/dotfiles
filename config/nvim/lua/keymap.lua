@@ -7,6 +7,8 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
+vim.keymap.set("n", "<S-ScrollWheelUp>", [[zH]])
+vim.keymap.set("n", "<S-ScrollWheelDown>", [[zL]])
 
 vim.keymap.set("n", "<leader>b", "<Cmd>Explore<Cr>")
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
@@ -21,6 +23,17 @@ vim.keymap.set('n', "<leader>z", function()
 	end
 end)
 
+-- L3MON4D3/LuaSnip
+local ls = require('luasnip')
+vim.keymap.set({ "i" }, "<C-K>", function() ls.expand() end, { silent = true })
+vim.keymap.set({ "i", "s" }, "<C-L>", function() ls.jump(1) end, { silent = true })
+vim.keymap.set({ "i", "s" }, "<C-J>", function() ls.jump(-1) end, { silent = true })
+
+vim.keymap.set({ "i", "s" }, "<C-E>", function()
+	if ls.choice_active() then
+		ls.change_choice(1)
+	end
+end, { silent = true })
 
 -- 'neovim/nvim-lspconfig'
 -- Global mappings.
