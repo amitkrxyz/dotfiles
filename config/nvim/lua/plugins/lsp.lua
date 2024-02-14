@@ -57,7 +57,7 @@ return {
 			handlers = handlers
 		})
 		require("fidget").setup()
-		local luasnip = require("luasnip")
+		-- local luasnip = require("luasnip")
 		local cmp = require("cmp")
 		require("luasnip.loaders.from_vscode").lazy_load()
 		cmp.setup({
