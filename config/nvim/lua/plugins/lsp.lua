@@ -17,7 +17,7 @@ return {
     "nvimtools/none-ls.nvim",
   },
   config = function()
-    local ensure_installed = { "lua_ls", "tsserver", "pyright" }
+    local ensure_installed = { "lua_ls" }
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
@@ -59,6 +59,7 @@ return {
     require("fidget").setup()
     -- local luasnip = require("luasnip")
     local cmp = require("cmp")
+    require("luasnip").filetype_extend("javascript", { "jsdoc" })
     require("luasnip.loaders.from_vscode").lazy_load()
     cmp.setup({
       experimental = {
