@@ -10,7 +10,13 @@ vim.keymap.set("n", "<leader>Y", [["+Y]])
 vim.keymap.set("n", "<S-ScrollWheelUp>", [[zH]])
 vim.keymap.set("n", "<S-ScrollWheelDown>", [[zL]])
 
-vim.keymap.set("n", "<leader>b", "<Cmd>Lexplore<Cr>")
+vim.keymap.set('n', '<leader>b', function()
+  if vim.bo.filetype == 'netrw' then
+    vim.cmd 'bwipeout'
+  else
+    vim.cmd 'Explore'
+  end
+end, { silent = true })
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
 
 
