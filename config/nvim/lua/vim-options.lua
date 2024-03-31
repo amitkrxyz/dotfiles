@@ -13,8 +13,13 @@ vim.opt.wrap = false
 vim.opt.undofile = true
 vim.opt.swapfile = false
 
-vim.g.netrw_banner = 0
+-- vim.g.netrw_banner = 0
 vim.g.undotree_SetFocusWhenToggle = true
+
+-- Causes issues
+-- with Telscope not searching in entire project
+-- Fixes move in netrw
+-- vim.g.netrw_keepdir = 0
 
 -- Case-insensitive searching UNLESS \C or capital in search
 vim.opt.ignorecase = true
