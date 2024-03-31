@@ -1,4 +1,29 @@
 return {
+  {
+    "toppair/peek.nvim",
+    event = { "VeryLazy" },
+    build = "deno task --quiet build:fast",
+    config = function()
+      require("peek").setup({
+        app = 'browser'
+      })
+      vim.api.nvim_create_user_command("PeekOpen", require("peek").open, {})
+      vim.api.nvim_create_user_command("PeekClose", require("peek").close, {})
+    end,
+  },
+  -- tadmccorkle/markdown.nvim
+  {
+    "tadmccorkle/markdown.nvim",
+    ft = "markdown", -- or 'event = "VeryLazy"'
+    opts = {
+      -- configuration here or empty for defaults
+    },
+  },
+  -- codeium ai
+  {
+    'Exafunction/codeium.vim',
+    event = 'BufEnter'
+  },
   -- The undo history visualizer for
   { 'mbbill/undotree' },
   {
@@ -8,7 +33,7 @@ return {
     config = function()
       require("mini.surround").setup()
       require("mini.comment").setup()
-      require("mini.ai").setup()
+      -- require("mini.ai").setup()
     end,
   },
   {
