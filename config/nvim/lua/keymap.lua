@@ -7,6 +7,7 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
+vim.api.nvim_set_keymap("x", "y", "ygv<Esc>", { noremap = true, silent = true })
 vim.keymap.set("n", "<S-ScrollWheelUp>", [[zH]])
 vim.keymap.set("n", "<S-ScrollWheelDown>", [[zL]])
 
