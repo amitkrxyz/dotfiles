@@ -23,4 +23,4 @@ name=$(echo "$chose" | cut -f1)
 link=$(echo "$chose" | cut -f2)
 echo "$name"
 echo "$link"
-mpv "$link"
+mpv --no-resume-playback "$link" 
