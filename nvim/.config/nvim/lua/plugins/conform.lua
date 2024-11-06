@@ -19,8 +19,11 @@ return {
 			-- Conform will run multiple formatters sequentially
 			python = { "isort", "black" },
 			-- Use a sub-list to run only the first available formatter
-			javascript = { { "prettierd", "prettier" } },
-			typescript = { { "prettierd", "prettier" } },
+			javascript = { "prettierd", "prettier" },
+			typescript = { "prettierd", "prettier" },
+			typescriptreact = { "prettierd", "prettier" },
+			javascriptreact = { "prettierd", "prettier" },
+			astro = { "prettierd", "prettier", stop_after_first = true },
 		},
 		format_on_save = { timeout_ms = 500, lsp_fallback = true },
 	},

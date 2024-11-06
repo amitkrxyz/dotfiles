@@ -32,6 +32,10 @@ return {
 			end,
 
 			["lua_ls"] = function()
+				lspconfig.gdscript.setup({
+					name = "godot",
+					cmd = vim.lsp.rpc.connect("127.0.0.1", "6005"),
+				})
 				lspconfig.lua_ls.setup({
 					settings = {
 						Lua = {
@@ -42,8 +46,18 @@ return {
 					},
 				})
 			end,
-			["tsserver"] = function()
-				lspconfig.tsserver.setup({
+			["basedpyright"] = function()
+				lspconfig.basedpyright.setup({
+					capabilities = capabilities,
+					settings = {
+						basedpyright = {
+							typeCheckingMode = "standard",
+						},
+					},
+				})
+			end,
+			["ts_ls"] = function()
+				lspconfig.ts_ls.setup({
 					root_dir = lspconfig.util.root_pattern("package.json"),
 					single_file_support = false,
 				})

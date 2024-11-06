@@ -1,5 +1,7 @@
 return {
-	"tpope/vim-sleuth",
+	"habamax/vim-godot",
+	-- sleuth.vim: Heuristically set buffer options
+	-- "tpope/vim-sleuth",
 	-- folke/trouble.nvim
 	{
 		"folke/trouble.nvim",
@@ -33,9 +35,19 @@ return {
 		},
 	},
 	-- codeium ai
+	-- {
+	-- 	"Exafunction/codeium.vim",
+	-- 	event = "BufEnter",
+	-- 	config = function()
+	-- 		vim.g.codeium_enabled = false
+	-- 	end,
+	-- },
+	-- Supermaven
 	{
-		"Exafunction/codeium.vim",
-		event = "BufEnter",
+		"supermaven-inc/supermaven-nvim",
+		config = function()
+			require("supermaven-nvim").setup({})
+		end,
 	},
 	-- The undo history visualizer for
 	{ "mbbill/undotree" },

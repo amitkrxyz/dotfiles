@@ -2,6 +2,8 @@ vim.g.mapleader = " "
 
 vim.opt.number = true
 vim.opt.relativenumber = true
+vim.opt.colorcolumn = "80"
+vim.opt.scrolloff = 8
 
 vim.opt.expandtab = false
 vim.opt.tabstop = 4
@@ -14,6 +16,12 @@ vim.opt.swapfile = false
 
 -- vim.g.netrw_banner = 0
 vim.g.undotree_SetFocusWhenToggle = true
+
+-- tresitter folding
+vim.wo.foldmethod = "expr"
+vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+-- set fold level
+vim.wo.foldlevel = 99
 
 -- Causes issues
 -- with Telscope not searching in entire project
