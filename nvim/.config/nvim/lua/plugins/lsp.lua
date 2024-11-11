@@ -18,11 +18,17 @@ return {
 		"onsails/lspkind.nvim",
 	},
 	config = function()
-		local ensure_installed = { "lua_ls" }
+		local ensure_installed = { 
+			-- "lua_ls" 
+		}
 		local capabilities = vim.lsp.protocol.make_client_capabilities()
 		capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
 		local lspconfig = require("lspconfig")
+		lspconfig.nil_ls.setup {}
+		lspconfig.tsserver.setup {
+			capabilities = capabilities,
+		}
 		local handlers = {
 			-- The first entry (without a key) will be the default handler
 			-- and will be called for each installed server that doesn't have
@@ -31,42 +37,42 @@ return {
 				require("lspconfig")[server_name].setup({ capabilities = capabilities })
 			end,
 
-			["lua_ls"] = function()
-				lspconfig.gdscript.setup({
-					name = "godot",
-					cmd = vim.lsp.rpc.connect("127.0.0.1", "6005"),
-				})
-				lspconfig.lua_ls.setup({
-					settings = {
-						Lua = {
-							diagnostics = {
-								globals = { "vim" },
-							},
-						},
-					},
-				})
-			end,
-			["basedpyright"] = function()
-				lspconfig.basedpyright.setup({
-					capabilities = capabilities,
-					settings = {
-						basedpyright = {
-							typeCheckingMode = "standard",
-						},
-					},
-				})
-			end,
-			["ts_ls"] = function()
-				lspconfig.ts_ls.setup({
-					root_dir = lspconfig.util.root_pattern("package.json"),
-					single_file_support = false,
-				})
-			end,
-			["denols"] = function()
-				lspconfig.denols.setup({
-					root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
-				})
-			end,
+			-- ["lua_ls"] = function()
+			-- 	lspconfig.gdscript.setup({
+			-- 		name = "godot",
+			-- 		cmd = vim.lsp.rpc.connect("127.0.0.1", "6005"),
+			-- 	})
+			-- 	lspconfig.lua_ls.setup({
+			-- 		settings = {
+			-- 			Lua = {
+			-- 				diagnostics = {
+			-- 					globals = { "vim" },
+			-- 				},
+			-- 			},
+			-- 		},
+			-- 	})
+			-- end,
+			-- ["basedpyright"] = function()
+			-- 	lspconfig.basedpyright.setup({
+			-- 		capabilities = capabilities,
+			-- 		settings = {
+			-- 			basedpyright = {
+			-- 				typeCheckingMode = "standard",
+			-- 			},
+			-- 		},
+			-- 	})
+			-- end,
+			-- ["ts_ls"] = function()
+			-- 	lspconfig.ts_ls.setup({
+			-- 		root_dir = lspconfig.util.root_pattern("package.json"),
+			-- 		single_file_support = false,
+			-- 	})
+			-- end,
+			-- ["denols"] = function()
+			-- 	lspconfig.denols.setup({
+			-- 		root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
+			-- 	})
+			-- end,
 		}
 		require("mason").setup()
 		require("mason-lspconfig").setup({

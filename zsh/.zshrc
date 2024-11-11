@@ -49,6 +49,7 @@ zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
 
 # zoxide
+unalias zi
 eval "$(zoxide init zsh)"
 
 
