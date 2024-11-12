@@ -1,0 +1,111 @@
+* {
+  font-family: Noto Serif, serif;
+  font-size: 1.25rem;
+} 
+
+/* Window */
+window {
+  background-color: #0e1415;
+  color: #dee3e5;
+  border: .2rem solid #82d3e0;
+  border-radius: 1rem;
+  animation: slideIn 0.5s ease-in-out both;
+}
+
+/* Slide In */
+@keyframes slideIn {
+  0% {
+     opacity: 0;
+  }
+
+  100% {
+     opacity: 1;
+  }
+}
+
+/* Inner Box */
+#inner-box {
+  /* animation: fadeIn 0.5s ease-in-out both; */
+}
+
+/* Fade In */
+@keyframes fadeIn {
+  0% {
+     opacity: 0;
+  }
+
+  100% {
+     opacity: 1;
+  }
+}
+
+/* Outer Box */
+#outer-box {
+  padding: 1rem 1rem;
+}
+
+/* Scroll */
+#scroll {
+  handler-width: 2rem;
+  handle-color: #b1cbd0;
+}
+
+/* Input */
+#input {
+  background-color: rgba(0, 0, 0, 0.0);
+  color: #dee3e5;
+  font-size: 1rem;
+  padding: .5rem;
+  margin: 0px 10px 10px 10px;
+  border: none;
+
+}
+
+#input:focused {
+  box-shadow: none;
+}
+
+
+#input image {
+}
+
+#input * {
+}
+
+/* Text */
+#text {
+}
+
+#text:selected {
+  color: #00363d;
+}
+
+#img {
+    margin-right: 1rem;
+  }
+
+#entry {
+  padding: 1rem;
+  border-radius: 10rem;
+  box-shadow: none;
+}
+
+#entry arrow {
+}
+
+/* Selected Entry */
+#entry:selected {
+  background-color: #82d3e0;
+  outline: none;
+}
+
+#entry:selected #text {
+}
+
+#entry:drop(active) {
+}
+
+#expander-box {
+  background-color: #0e1415;
+  border-radius: 10rem;
+}
