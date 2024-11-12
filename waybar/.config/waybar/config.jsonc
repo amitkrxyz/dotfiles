@@ -1,0 +1,264 @@
+// -*- mode: jsonc -*-
+{
+    // "layer": "top", // Waybar at top layer
+    // "position": "bottom", // Waybar position (top|bottom|left|right)
+    // "height": 10, // Waybar height (to be removed for auto height)
+    // "width": 1280, // Waybar width
+    "output": "eDP-1",
+    "spacing": 4, // Gaps between modules (4px)
+    // Choose the order of the modules
+    "modules-left": [
+        "hyprland/workspaces",
+        "wlr/taskbar",
+        "hyprland/window",
+        "hyprland/submap"
+    ],
+    "modules-center": [
+        "clock",
+        "custom/runcat",
+    ],
+    "modules-right": [
+        "keyboard-state",
+        "tray",
+        "privacy",
+        "idle_inhibitor",
+        // "power-profiles-daemon",
+        "backlight",
+        "pulseaudio",
+        "network",
+        "cpu",
+        "memory",
+        "temperature",
+        "battery",
+    ],
+    "custom/runcat": {
+        "exec": "~/myhome/git-repo/polycat/polycat",
+    },
+    // Modules configuration
+    "wlr/taskbar": {
+        "format": "{icon}",
+        "icon-size": 16,
+        "icon-theme": "HighContrast",
+        "tooltip-format": "{title}",
+        "on-click": "activate",
+        "on-click-middle": "fullscreen",
+        "on-click-right": "close",
+        "active-first": true,
+        "ignore-list": [
+            "Alacritty"
+        ],
+        "app_ids-mapping": {
+            "firefoxdeveloperedition": "firefox-developer-edition"
+        },
+        "rewrite": {
+            "Firefox Web Browser": "Firefox",
+            "Foot Server": "Terminal"
+        }
+    },
+    "privacy": {
+	"icon-spacing": 4,
+        "icon-size": 18,
+        "transition-duration": 250,
+        "modules": [
+            {
+                "type": "screenshare",
+                "tooltip": true,
+                "tooltip-icon-size": 24
+            }
+            // {
+            //     "type": "audio-out",
+            //     "tooltip": true,
+            //     "tooltip-icon-size": 24
+            // },
+            // {
+            //     "type": "audio-in",
+            //     "tooltip": true,
+            //     "tooltip-icon-size": 24
+            // }
+        ]
+    },
+    "hyprland/workspaces": {
+        "format": "{icon}",
+        "format-icons": {
+            "1": "",
+            "2": "",
+            "3": "",
+            "4": "",
+            "magic": "",
+            // "active": "",
+            "default": ""
+            // "default": " "
+        },
+        "show-special": true,
+        "on-scroll-up": "hyprctl dispatch workspace e-1",
+        "on-scroll-down": "hyprctl dispatch workspace e+1",
+        "on-click": "nwg-drawer",
+        "persistent-workspaces": {
+            "HDMI-A-1": 1,
+            "eDP-1": 4
+        }
+    },
+    "hyprland/window": {
+        "format": "{title}",
+        "icon": false,
+    },
+    "keyboard-state": {
+        "capslock": true,
+        "numlock": false,
+        "format": "{icon}",
+        "format-icons": {
+            "locked": "",
+            "unlocked": ""
+        }
+    },
+    "mpd": {
+        "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
+        "format-disconnected": "Disconnected ",
+        "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
+        "unknown-tag": "N/A",
+        "interval": 5,
+        "consume-icons": {
+            "on": " "
+        },
+        "random-icons": {
+            "off": "<span color=\"#f53c3c\"></span> ",
+            "on": " "
+        },
+        "repeat-icons": {
+            "on": " "
+        },
+        "single-icons": {
+            "on": "1 "
+        },
+        "state-icons": {
+            "paused": "",
+            "playing": ""
+        },
+        "tooltip-format": "MPD (connected)",
+        "tooltip-format-disconnected": "MPD (disconnected)"
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    },
+    "tray": {
+        // "icon-size": 21,
+        "spacing": 10
+    },
+    "clock": {
+        "format": "{:%b %d %H:%M:%S}",
+        "interval": 1,
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        // "format-alt": "{:%Y-%m-%d}"
+    },
+    "cpu": {
+        "interval": 1,
+        "format": "{max_frequency}GHz ",
+        // "tooltip": false
+    },
+    "memory": {
+        "format": "{}% "
+    },
+    "temperature": {
+        // "thermal-zone": 2,
+        "hwmon-path": [
+            "/sys/class/hwmon/hwmon0/temp1_input",
+            "/sys/class/hwmon/hwmon1/temp1_input",
+            "/sys/class/hwmon/hwmon2/temp1_input",
+            "/sys/class/hwmon/hwmon3/temp1_input"
+        ],
+        "critical-threshold": 70,
+        "format": "{temperatureC}°C {icon}",
+        "format-icons": ["", "", ""],
+        "tooltip-format": "Temperature "
+    },
+    "backlight": {
+        // "device": "acpi_video1",
+        "scroll-step": 5,
+        "tooltip-format": "Brightness ",
+        "format": "{percent}% {icon}",
+        "format-icons": "",
+        // "format-icons": ["🌑", "🌘", "🌗", "🌖", "🌕"],
+    },
+    "battery": {
+        "states": {
+            "warning": 40,
+            "critical": 20
+        },
+        "format": "{capacity}% {icon}",
+        "format-full": "{capacity}% {icon}",
+        "format-charging": "{capacity}% ",
+        "format-plugged": "{capacity}% ",
+        "format-alt": "{power}W ",
+        "on-click-right": "wlogout",
+        // "format-good": "", // An empty format will hide the module
+        // "format-warning": "{capacity}% 🪫",
+        // "format-full": "",
+        "format-icons": ["", "", "", "", ""],
+        "tooltip-format": "{time}"
+    },
+    "battery#bat2": {
+        "bat": "BAT2"
+    },
+    "power-profiles-daemon": {
+      "format": "{icon}",
+      "tooltip-format": "Power profile",
+      // "tooltip": true,
+      "format-icons": {
+        "default": "",
+        "performance": "",
+        "balanced": "",
+        "power-saver": ""
+      }
+    },
+    "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        // "format-wifi": "{essid} ({signalStrength}%) ",
+        // "format-ethernet": "{ipaddr}/{cidr} ",
+        // "tooltip-format": "{ifname} via {gwaddr} ",
+        // "format-linked": "{ifname} (No IP) ",
+        "format-wifi": "{bandwidthDownBytes}  ",
+        "format-ethernet": "{bandwidthDownBytes} ",
+        "format": "{bandwidthDownBytes} ",
+        "format-disconnected": "Network ⚠",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+        "tooltip-format": "{essid} ({signalStrength}%) {ipaddr}/{cidr}",
+        "interval": 1
+    },
+    "pulseaudio": {
+        "scroll-step": 5, // %, can be a float
+        "format": "{volume}% {icon}",
+        "format-bluetooth": " {volume}% {icon}",
+        "format-bluetooth-muted": " {icon} ",
+        "format-muted": "",
+        "format-source": "{volume}% ",
+        "format-source-muted": "Mute ",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "tooltip-format": "{format_source}",
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "on-click-right": "pavucontrol"
+    },
+    "custom/media": {
+        "format": "{icon} {}",
+        "return-type": "json",
+        "max-length": 40,
+        "format-icons": {
+            "spotify": "",
+            "default": "🎜"
+        },
+        "escape": true,
+        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
+        // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
+    }
+}
