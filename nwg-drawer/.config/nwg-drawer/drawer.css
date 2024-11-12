@@ -1,0 +1,56 @@
+window {
+  background-color: rgba (0, 0, 0, 0.9);
+  color: #ffffff;
+}
+
+/* search entry */
+entry {
+  background-color: rgba (0, 0, 0, 0.2);
+  border: .1rem solid gray;
+  color: gray;
+  box-shadow: none;
+  border-radius: 999px;
+}
+entry:focus {
+  border-color: gray;
+}
+
+button  {
+  padding: 1rem;
+  background: none;
+  border: none;
+  box-shadow: none;
+  color: #ffffff;
+  text-shadow: none
+}
+
+
+button:hover {
+  background-color: rgba (255, 255, 255, 0.1)
+}
+
+button:focus {
+  background-color: rgba (255, 255, 255, 0.2)
+}
+
+/* in case you wanted to give category buttons a different look */
+#category-button {
+  margin: 0px 10px;
+  padding: 0px 20px;
+  border: 0.1rem solid gray;
+}
+
+#pinned-box {
+  margin-top: .75rem;
+}
+
+#pinned-box button {
+  min-width: 25px;
+  border-radius: 1rem;
+  border: .2rem dashed gray;
+}
+
+#files-box {
+  padding: 5px;
+  border: 1px dashed white;
+}
