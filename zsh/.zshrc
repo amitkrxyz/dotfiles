@@ -7,7 +7,16 @@ fi
 
 # alias
 alias rm='rm -i'
-alias ls='ls --color=auto'
+alias ls='ls --color=auto -F'
+alias ll='ls -l'
+alias la='ls -A'
+alias lla='ls -la'
+
+
+# Path
+export PATH="$HOME/go/bin:$PATH"
+# linuxbrew
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 # Keybindigns
 bindkey -v
@@ -21,8 +30,9 @@ bindkey '\e[1;5B' end-of-line # Ctrl+down
 
 export WORDCHARS="${WORDCHARS//-/.}"
 
+
 # oh-my-posh
-if [ "$TERM" != "linux" ]; then
+if [ "$TERM" != "linux" ] && command -v oh-my-posh > /dev/null; then
 	eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/tokyonight_storm.json)"
 fi
 
@@ -36,11 +46,11 @@ source "${ZINIT_HOME}/zinit.zsh"
 # zsh-syntax-highlighting
 zinit light zsh-users/zsh-syntax-highlighting
 
-# WARNING: Having performance issues with this plugin
+# WARNING: May have performance issues with this plugin
 # zsh-completions
-# zinit light zsh-users/zsh-completions
+zinit light zsh-users/zsh-completions
 # load completions
-# autoload -U compinit && compinit
+autoload -U compinit && compinit
 
 # zsh-autosuggestions
 zinit light zsh-users/zsh-autosuggestions
@@ -64,8 +74,9 @@ setopt hist_ignore_dups
 setopt hist_save_no_dups
 setopt hist_find_no_dups
 
-# Completion styling
+#Completion styling
 zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' # Case-insensitive tab completion
 zstyle ':completion:*' list-colors '${(s.:.)LS_COLORS}' # Color code completion menu
 zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
+
