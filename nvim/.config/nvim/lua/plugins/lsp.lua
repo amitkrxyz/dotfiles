@@ -26,7 +26,7 @@ return {
 
 		local lspconfig = require("lspconfig")
 		lspconfig.nil_ls.setup {}
-		lspconfig.tsserver.setup {
+		lspconfig.ts_ls.setup {
 			capabilities = capabilities,
 		}
 		local handlers = {
