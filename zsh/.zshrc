@@ -7,16 +7,28 @@ fi
 
 # alias
 alias rm='rm -i'
-alias ls='ls --color=auto -F'
+
+# eza
+if command -v eza > /dev/null; then
+	alias ls="eza --icons=auto --hyperlink"
+else
+	alias ls='ls --color=auto -F'
+fi
+
 alias ll='ls -l'
 alias la='ls -A'
 alias lla='ls -la'
 
+# environment variables
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+export MANROFFOPT="-c"
 
 # Path
 export PATH="$HOME/go/bin:$PATH"
 # linuxbrew
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+
 
 # Keybindigns
 bindkey -v
@@ -62,6 +74,15 @@ zinit light Aloxaf/fzf-tab
 unalias zi
 eval "$(zoxide init zsh)"
 
+# yazi
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
 
 
 HISTFILE=~/.histfile
