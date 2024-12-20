@@ -25,6 +25,7 @@ export MANROFFOPT="-c"
 
 # Path
 export PATH="$HOME/go/bin:$PATH"
+
 # linuxbrew
 if [ -f /home/linuxbrew/.linuxbrew/bin/brew ]; then
 	eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
@@ -42,6 +43,9 @@ bindkey '\e[1;5A' beginning-of-line # Ctrl+up
 bindkey '\e[1;5B' end-of-line # Ctrl+down
 
 export WORDCHARS="${WORDCHARS//-/.}"
+
+# Deafult prompt
+PROMPT='%F{green}%~ %f$ '
 
 # oh-my-posh
 if [ "$TERM" != "linux" ] && command -v oh-my-posh > /dev/null; then
