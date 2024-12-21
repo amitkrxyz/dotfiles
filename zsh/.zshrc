@@ -74,6 +74,11 @@ zinit light zsh-users/zsh-autosuggestions
 # fzf-tab
 zinit light Aloxaf/fzf-tab
 
+# fzf
+if command -v fzf > /dev/null; then
+	source <(fzf --zsh)
+fi
+
 # zoxide
 unalias zi
 eval "$(zoxide init zsh)"
