@@ -23,8 +23,11 @@ alias lla='ls -la'
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export MANROFFOPT="-c"
 
+export EDITOR="nvim"
+
 # Path
 export PATH="$HOME/go/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 
 # linuxbrew
 if [ -f /home/linuxbrew/.linuxbrew/bin/brew ]; then
