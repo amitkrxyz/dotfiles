@@ -52,16 +52,16 @@ return {
 			-- 		},
 			-- 	})
 			-- end,
-			-- ["basedpyright"] = function()
-			-- 	lspconfig.basedpyright.setup({
-			-- 		capabilities = capabilities,
-			-- 		settings = {
-			-- 			basedpyright = {
-			-- 				typeCheckingMode = "standard",
-			-- 			},
-			-- 		},
-			-- 	})
-			-- end,
+			["basedpyright"] = function()
+				lspconfig.basedpyright.setup({
+					capabilities = capabilities,
+					settings = {
+						basedpyright = {
+							typeCheckingMode = "standard",
+						},
+					},
+				})
+			end,
 			-- ["ts_ls"] = function()
 			-- 	lspconfig.ts_ls.setup({
 			-- 		root_dir = lspconfig.util.root_pattern("package.json"),
