@@ -1,8 +1,8 @@
 return {
 	"habamax/vim-godot",
-	-- sleuth.vim: Heuristically set buffer options
-	-- "tpope/vim-sleuth",
-	-- folke/trouble.nvim
+	-- -- sleuth.vim: Heuristically set buffer options
+	-- -- "tpope/vim-sleuth",
+	-- -- folke/trouble.nvim
 	{
 		"folke/trouble.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -34,14 +34,6 @@ return {
 			-- configuration here or empty for defaults
 		},
 	},
-	-- codeium ai
-	-- {
-	-- 	"Exafunction/codeium.vim",
-	-- 	event = "BufEnter",
-	-- 	config = function()
-	-- 		vim.g.codeium_enabled = false
-	-- 	end,
-	-- },
 	-- Supermaven
 	{
 		"supermaven-inc/supermaven-nvim",
@@ -105,13 +97,13 @@ return {
 			require("nvim-highlight-colors").setup({})
 		end,
 	},
-	{
-		"akinsho/flutter-tools.nvim",
-		lazy = false,
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"stevearc/dressing.nvim", -- optional for vim.ui.select
-		},
-		config = true,
-	},
+	-- {
+	-- 	"akinsho/flutter-tools.nvim",
+	-- 	lazy = false,
+	-- 	dependencies = {
+	-- 		"nvim-lua/plenary.nvim",
+	-- 		"stevearc/dressing.nvim", -- optional for vim.ui.select
+	-- 	},
+	-- 	config = true,
+	-- },
 }
