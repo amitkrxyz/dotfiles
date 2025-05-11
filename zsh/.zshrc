@@ -28,6 +28,8 @@ export EDITOR="nvim"
 # Path
 export PATH="$HOME/go/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.bun/bin:$PATH"
+
 
 # linuxbrew
 if [ -f /home/linuxbrew/.linuxbrew/bin/brew ]; then
@@ -112,4 +114,3 @@ zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' # Case-insensitive tab co
 zstyle ':completion:*' list-colors '${(s.:.)LS_COLORS}' # Color code completion menu
 zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
-
