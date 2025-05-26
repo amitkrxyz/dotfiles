@@ -42,6 +42,7 @@ bindkey -v
 bindkey '^y' autosuggest-accept
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
+bindkey '^h' backward-kill-word
 bindkey '\e[1;5D' backward-word # Ctrl+left
 bindkey '\e[1;5C' forward-word # Ctrl+right
 bindkey '\e[1;5A' beginning-of-line # Ctrl+up
