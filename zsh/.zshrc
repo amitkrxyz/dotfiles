@@ -29,6 +29,7 @@ export EDITOR="nvim"
 export PATH="$HOME/go/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.bun/bin:$PATH"
+export PATH="$HOME/.local/scripts:$PATH"
 
 
 # linuxbrew
@@ -42,7 +43,7 @@ bindkey -v
 bindkey '^y' autosuggest-accept
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
-bindkey '^h' backward-kill-word
+bindkey '^h' backward-kill-word # Ctrl+backspace
 bindkey '\e[1;5D' backward-word # Ctrl+left
 bindkey '\e[1;5C' forward-word # Ctrl+right
 bindkey '\e[1;5A' beginning-of-line # Ctrl+up
