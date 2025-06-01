@@ -30,6 +30,13 @@ export PATH="$HOME/go/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.bun/bin:$PATH"
 export PATH="$HOME/.local/scripts:$PATH"
+export PATH="$HOME/development/flutter:$PATH"
+## Android
+export ANDROID_HOME=$HOME/Android
+export PATH=$ANDROID_HOME/cmdline-tools/latest/bin/:$PATH
+export PATH=$ANDROID_HOME/emulator/:$PATH
+export PATH=$ANDROID_HOME/platform-tools/:$PATH
+export PATH="$HOME/development/flutter/bin:$PATH"
 
 
 # linuxbrew
@@ -39,7 +46,6 @@ fi
 
 
 # Keybindigns
-bindkey -v
 bindkey '^y' autosuggest-accept
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
