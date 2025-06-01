@@ -4,7 +4,7 @@
 # Dependency: curl, jq, parallel, kitty
 
 # For instance url: https://api.invidious.io/
-URL="https://invidious.einfachzocken.eu"
+URL="https://invidious.f5.si"
 
 echo "Searching for videos..." >&2
 # replaceing spaces with %20
