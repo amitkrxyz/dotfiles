@@ -26,11 +26,13 @@ export MANROFFOPT="-c"
 export EDITOR="nvim"
 
 # Path
-export PATH="$HOME/go/bin:$PATH"
-export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.bun/bin:$PATH"
-export PATH="$HOME/.local/scripts:$PATH"
 export PATH="$HOME/development/flutter:$PATH"
+export PATH="$HOME/go/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/Application/:$PATH"
+export PATH="$HOME/.local/scripts:$PATH"
 ## Android
 export ANDROID_HOME=$HOME/Android
 export PATH=$ANDROID_HOME/cmdline-tools/latest/bin/:$PATH
@@ -96,6 +98,9 @@ fi
 unalias zi
 eval "$(zoxide init zsh)"
 
+# atuin
+eval "$(atuin init zsh --disable-up-arrow)"
+
 # yazi
 function y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
@@ -108,7 +113,7 @@ function y() {
 
 
 HISTFILE=~/.histfile
-HISTSIZE=1000
+HISTSIZE=10000
 SAVEHIST=$HISTSIZE
 HISTDUP=erase
 setopt appendhistory
