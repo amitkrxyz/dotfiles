@@ -1,0 +1,2 @@
+# Capture camera with v4l2
+scrcpy --video-source=camera --camera-facing=back --camera-ar=sensor -m640 --v4l2-sink=/dev/video0 --no-audio-playback --no-window

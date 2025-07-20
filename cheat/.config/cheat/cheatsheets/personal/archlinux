@@ -1,0 +1,4 @@
+# fix: failed to commit transaction
+sudo pacman -S archlinux-keyring
+sudo pacman -Su
+sudo pacman-key --populate

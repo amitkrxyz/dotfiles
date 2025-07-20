@@ -1,0 +1,11 @@
+---
+tags [ networking ]
+---
+# Scan a target
+nmap [ip_or_hostname]
+
+# Scan specific list of ports (use '-p-' for all ports)
+nmap  -p [port1,port2,...,portN] [ip_or_hostname]
+
+# List all devices on current network no port scan
+nmap -sn 192.168.1.1/24

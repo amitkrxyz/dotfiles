@@ -1,0 +1,15 @@
+# Download best quality <=720p video with avc1 (h264) codec 
+yt-dlp -f "bv*[height<=720][ext=mp4][vcodec^=avc1]+ba*[ext=m4a]" [link]
+
+# List subtitles
+yt-dlp --skip-download --list-subs [link]
+
+# Download only subtitles
+yt-dlp --skip-download --write-sub  [link]
+
+# Download auto-generated subtitles
+yt-dlp --skip-download --write-auto-sub [link]
+
+# Download subtitle of specific format
+yt-dlp --skip-download --write-sub --sub-format [json3|ttml|vtt] [link]
+

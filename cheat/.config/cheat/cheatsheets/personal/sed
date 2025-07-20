@@ -1,0 +1,2 @@
+# Remove ansi escape sequence
+sed 's/\x1b\[[0-9;]*[mGKH]//g'

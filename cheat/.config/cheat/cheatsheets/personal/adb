@@ -1,0 +1,5 @@
+# Scan and list wifi
+adb shell 'cmd -w wifi start-scan; sleep 7; cmd -w wifi list-scan-results'
+
+# Get all contact details
+adb shell content query --uri content://com.android.contacts/data
