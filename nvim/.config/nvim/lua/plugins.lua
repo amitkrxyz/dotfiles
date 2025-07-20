@@ -102,14 +102,14 @@ return {
 		lazy = false, -- or ft = 'typst'
 		version = '1.*',
 		opts = {}, -- lazy.nvim will implicitly calls `setup {}`
-	}
-	-- {
-	-- 	"akinsho/flutter-tools.nvim",
-	-- 	lazy = false,
-	-- 	dependencies = {
-	-- 		"nvim-lua/plenary.nvim",
-	-- 		"stevearc/dressing.nvim", -- optional for vim.ui.select
-	-- 	},
-	-- 	config = true,
-	-- },
+	},
+	{
+		"akinsho/flutter-tools.nvim",
+		lazy = false,
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"stevearc/dressing.nvim", -- optional for vim.ui.select
+		},
+		config = true,
+	},
 }
