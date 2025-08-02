@@ -95,21 +95,27 @@ if command -v fzf > /dev/null; then
 fi
 
 # zoxide
-unalias zi
-eval "$(zoxide init zsh)"
+if command -v zoxide > /dev/null; then
+	unalias zi
+	eval "$(zoxide init zsh)"
+fi
 
 # atuin
-eval "$(atuin init zsh --disable-up-arrow)"
+if command -v atuin > /dev/null; then
+	eval "$(atuin init zsh --disable-up-arrow)"
+fi
 
 # yazi
-function y() {
-	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
-	yazi "$@" --cwd-file="$tmp"
-	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-		builtin cd -- "$cwd"
-	fi
-	rm -f -- "$tmp"
-}
+if command -v yazi > /dev/null; then
+	function y() {
+		local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+		yazi "$@" --cwd-file="$tmp"
+		if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+			builtin cd -- "$cwd"
+		fi
+		rm -f -- "$tmp"
+	}
+fi
 
 
 HISTFILE=~/.histfile
