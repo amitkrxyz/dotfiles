@@ -38,7 +38,16 @@ return {
 	{
 		"supermaven-inc/supermaven-nvim",
 		config = function()
-			require("supermaven-nvim").setup({})
+			require("supermaven-nvim").setup({
+				keymaps = {
+					accept_suggestion = "<Tab>",
+					clear_suggestion = "<C-]>",
+					accept_word = "<C-j>",
+				},
+				condition = function()
+					return true
+				end
+			})
 		end,
 	},
 	-- The undo history visualizer for
@@ -51,27 +60,6 @@ return {
 			require("mini.surround").setup()
 			require("mini.comment").setup()
 			-- require("mini.ai").setup()
-		end,
-	},
-	-- {
-	-- 	-- Indent guides for Neovim
-	-- 	"lukas-reineke/indent-blankline.nvim",
-	-- 	main = "ibl",
-	-- 	opts = {
-	-- 		scope = {
-	-- 			show_start = false,
-	-- 		},
-	-- 	},
-	-- 	-- config = function()
-	-- 	-- 	require("ibl").setup()
-	-- 	-- end,
-	-- },
-	{
-		-- Statusline plugin written in pure lua.
-		"nvim-lualine/lualine.nvim",
-		dependencies = { "nvim-tree/nvim-web-devicons" },
-		config = function()
-			require("lualine").setup({})
 		end,
 	},
 	{

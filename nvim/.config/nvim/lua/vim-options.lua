@@ -5,6 +5,8 @@ vim.opt.relativenumber = true
 vim.opt.colorcolumn = "80"
 vim.opt.scrolloff = 8
 
+vim.opt.winborder = 'rounded'
+
 vim.opt.expandtab = false
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
