@@ -32,7 +32,7 @@
         "battery",
     ],
     "custom/runcat": {
-        "exec": "~/myhome/git-repo/polycat/polycat",
+        "exec": "~/myhome/git-repo/polycat/build/polycat -c ~/myhome/git-repo/polycat/res/polycat-config",
     },
     // Modules configuration
     "wlr/taskbar": {
