@@ -41,13 +41,13 @@ end)
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist)
-vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action)
+vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action)
 vim.keymap.set("n", "gd", vim.lsp.buf.definition)
 
 -- Fzf-lua
-vim.keymap.set("n", "<leader>sf", require("fzf-lua").files)
-vim.keymap.set("n", "<leader>sg", require("fzf-lua").live_grep)
-vim.keymap.set("n", "<leader>sc", require("fzf-lua").awesome_colorschemes)
+vim.keymap.set("n", "<leader>ff", require("fzf-lua").files)
+vim.keymap.set("n", "<leader>fg", require("fzf-lua").live_grep)
+vim.keymap.set("n", "<leader>fc", require("fzf-lua").awesome_colorschemes)
 vim.keymap.set("n", "<leader><leader>", require("fzf-lua").buffers)
 
 

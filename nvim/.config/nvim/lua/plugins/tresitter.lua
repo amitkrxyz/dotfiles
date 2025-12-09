@@ -1,3 +1,4 @@
+---@diagnostic disable: missing-fields
 return {
 	{
 		-- Nvim Treesitter configurations and abstraction layer
@@ -7,8 +8,17 @@ return {
 		auto_install = true,
 		build = ":TSUpdate",
 		config = function()
-			local config = require("nvim-treesitter.configs")
-			config.setup({})
+			require("nvim-treesitter.configs").setup({
+				highlight = {
+					enable = true,
+				},
+				indent = {
+					enable = true
+				},
+				incremental_selection = {
+					enable = true
+				}
+			})
 		end,
 	},
 	{

@@ -34,7 +34,7 @@ return {
 				max_height = 20,
 			},
 			list = {
-				max_items = 2000
+				-- max_items = 2000
 			}
 
 		},
@@ -43,6 +43,15 @@ return {
 			nerd_font_variant = 'mono'
 		},
 		signature = { enabled = true },
+		cmdline = {
+			keymap = {
+				preset = 'inherit'
+			},
+			completion = {
+				menu = { auto_show = true }
+			}
+		},
+
 
 		-- Default list of enabled providers defined so that you can extend it
 		-- elsewhere in your config, without redefining it, due to `opts_extend`
