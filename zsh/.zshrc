@@ -4,7 +4,6 @@ if [ -z "$WAYLAND_DISPLAY" ] && \
     exec dbus-run-session Hyprland
 fi
 
-
 # alias
 alias rm='rm -i'
 
@@ -15,15 +14,25 @@ else
 	alias ls='ls --color=auto -F'
 fi
 
+# environment variables
+if command -v bat > /dev/null; then
+	export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+	export MANROFFOPT="-c"
+fi
+
+if command -v nvim > /dev/null;then
+	export EDITOR="nvim"
+fi
+
 alias ll='ls -l'
 alias la='ls -A'
 alias lla='ls -la'
 
-# environment variables
-export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-export MANROFFOPT="-c"
-
-export EDITOR="nvim"
+function clrpicker() {
+	color="$(grim -g "$(slurp -p)" -t ppm - | magick  - -format '#%[hex:p{0,0}]' info:)"
+	echo "$color"
+	wl-copy "$color"
+}
 
 # Path
 export PATH="$HOME/.bun/bin:$PATH"
@@ -43,7 +52,12 @@ export PATH="$HOME/development/flutter/bin:$PATH"
 
 # linuxbrew
 if [ -f /home/linuxbrew/.linuxbrew/bin/brew ]; then
-	eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+	export HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew";
+	export HOMEBREW_CELLAR="/home/linuxbrew/.linuxbrew/Cellar";
+	export HOMEBREW_REPOSITORY="/home/linuxbrew/.linuxbrew/Homebrew";
+	export PATH="${PATH:+$PATH:}/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin"
+	[ -z "${MANPATH-}" ] || export MANPATH=":${MANPATH#:}";
+	export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:${INFOPATH:-}";
 fi
 
 
@@ -92,6 +106,29 @@ zinit light Aloxaf/fzf-tab
 # fzf
 if command -v fzf > /dev/null; then
 	source <(fzf --zsh)
+	export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
+		--highlight-line \
+		--info=inline-right \
+		--ansi \
+		--layout=reverse \
+		--border=none \
+		--color=bg+:#283457 \
+		--color=bg:#16161e \
+		--color=border:#27a1b9 \
+		--color=fg:#c0caf5 \
+		--color=gutter:#16161e \
+		--color=header:#ff9e64 \
+		--color=hl+:#2ac3de \
+		--color=hl:#2ac3de \
+		--color=info:#545c7e \
+		--color=marker:#ff007c \
+		--color=pointer:#ff007c \
+		--color=prompt:#2ac3de \
+		--color=query:#c0caf5:regular \
+		--color=scrollbar:#27a1b9 \
+		--color=separator:#ff9e64 \
+		--color=spinner:#ff007c \
+		"
 fi
 
 # zoxide
